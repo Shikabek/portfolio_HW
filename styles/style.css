@@ -26,7 +26,7 @@ a{
     background-color: inherit;
 }
 
-.header_container, .home_container, .about_container, .project_container {
+.header_container, .home_container, .about_container, .project_container, .footer_container{
     max-width: 1229px;
     margin-inline: auto;
 }
@@ -138,7 +138,7 @@ a{
     gap: 32px;
 }
 
-.about_heading, .project_heading {
+.about_heading, .project_heading, .footer_heading{
     font-size: 100px;
     font-weight: 800;
     color: var(--superlightyellow);
@@ -213,4 +213,26 @@ a{
     font-size: 18px;
     font-weight: 400;
     line-height: 32px;
+}
+
+.logo {
+    height: 48px;
+    width: auto;
+}
+
+.footer_paragraph {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.footer_container {
+    margin-top: 183px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.footer_logos {
+    display: flex;
+    justify-content: space-between;
 }
