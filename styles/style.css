@@ -26,7 +26,7 @@ a{
     background-color: inherit;
 }
 
-.header_container, .home_container, .about_container, .project_container, .footer_container{
+[class*="_container"] {
     max-width: 1229px;
     margin-inline: auto;
 }
@@ -138,7 +138,7 @@ a{
     gap: 32px;
 }
 
-.about_heading, .project_heading, .footer_heading{
+.about_heading, .project_heading{
     font-size: 100px;
     font-weight: 800;
     color: var(--superlightyellow);
@@ -215,24 +215,78 @@ a{
     line-height: 32px;
 }
 
-.logo {
-    height: 48px;
-    width: auto;
-}
-
-.footer_paragraph {
-    font-size: 24px;
-    font-weight: 600;
+.footer_header {
+    font-size: 100px;
+    font-weight: 800;
+    color: var(--darkblue);
+    text-align: center;
 }
 
 .footer_container {
-    margin-top: 183px;
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
+    margin-top: 160px;
+    justify-content: center;
 }
 
-.footer_logos {
+.card_front_logo {
+    height: auto;
+    width: 80px;
+}
+
+.footer_cards{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+/* 1. Камера (Внешняя обертка) */
+.skill_card {
+    background-color: transparent;
+    width: 100%;
+    height: 160px; /* Задай нужную высоту для карточек */
+    perspective: 1000px; /* Камера вешается сюда! */
+    cursor: pointer;
+}
+
+/* 2. Шарнир (Невидимый механизм вращения) */
+.skill_card_inner {
+    position: relative; /* Важно, чтобы стороны держались внутри */
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s ease; /* Плавность анимации */
+    transform-style: preserve-3d; /* Приказываем не делать элемент плоским */
+}
+
+/* 3. Переворот (Этот класс мы будем добавлять в JS) */
+.skill_card.is-flipped .skill_card_inner {
+    transform: rotateY(180deg);
+}
+
+/* 4. Общие стили для лица и рубашки */
+.card_front, .card_backside {
+    position: absolute; /* Накладываем их ровно друг на друга */
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Скрываем изнанку у обеих сторон */
+    
+    /* Перенесли твое центрирование и рамку СЮДА */
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: #03045E 2px solid;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+/* 5. Лицевая сторона (с картинкой) */
+.card_front {
+    background-color: var(--yellow); /* Фон, чтобы рубашка не просвечивала */
+}
+
+/* 6. Рубашка (с текстом) */
+.card_backside {
+    background-color: var(--superlightyellow); /* Чуть другой фон для красоты */
+    color: var(--darkblue);
+    transform: rotateY(180deg); /* ИЗНАЧАЛЬНО разворачиваем рубашку спиной! */
 }
